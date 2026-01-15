@@ -6,10 +6,11 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 public class QuizService {
-    private Map<Long, Question> questions = new HashMap<>();
+    private Map<UUID, Question> questions = new HashMap<>();
 
     public List<Question> getAllQuestions(){
         return questions.values().stream().toList();
@@ -19,9 +20,8 @@ public class QuizService {
         questions.put(question.getId(),question);
     }
 
-    public void updateQuestion(Long id,Question updated){
+    public void updateQuestion(UUID id,Question updated){
         Question existing = questions.get(id);
-        existing.setId(updated.getId());
         existing.setOptions(updated.getOptions());
         existing.setQuestionText(updated.getQuestionText());
         existing.setCorrectAns(updated.getCorrectAns());

@@ -4,14 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
 </head>
 <body>
 <h1>Admin Dashboard</h1>
 <h1>Welcome, <span th:text="${username}">. You have logged in as admin</span>!</h1>
-<p>Total turnover this month $3500000</p>
-<p>Current stock worth $2500000</p>
-<form th:action="@{/logout}" method="post">
-    <button type="submit">Logout</button>
+<form id="question-setter" th:action="@{/addQuestion}" method="POST">
+    <label for="question">add the question below.</label>
+    <input type="text" id="question" name="question">
+    <div class="answers-div">
+        <div>
+            <label for="option1">Option 1</label>
+            <input  class="question-option" type="text" id="option1" name="options"/>
+        </div>
+        <div>
+            <label for="option2">Option 2</label>
+            <input class="question-option" type="text" id="option2" name="options"/>
+        </div>
+        <div>
+            <label for="option3">Option 3</label>
+            <input class="question-option" type="text" id="option3" name="options"/>
+        </div>
+        <div>
+            <label for="option4">Option 4</label>
+            <input class="question-option" type="text" id="option4" name="options"/>
+        </div>
+    </div>
+    <div class="correct-ans-div" style="display:none">
+        <h3>Select the correct answer below</h3>
+        <label class="select-correct-ans">
+            <input type="radio" name="correctAns">
+            <span></span>
+            <span></span>
+        </label>
+        <label class="select-correct-ans">
+            <input type="radio" name="correctAns">
+            <span></span>
+            <span></span>
+        </label>
+        <label class="select-correct-ans">
+            <input type="radio" name="correctAns">
+            <span></span>
+            <span></span>
+        </label>
+        <label class="select-correct-ans">
+            <input type="radio" name="correctAns">
+            <span></span>
+            <span></span>
+        </label>
+    </div>
+
+
+    <button type="submit">ADD QUESTION</button>
 </form>
+<script th:src="@{/js/admin.js}" defer></script>
 </body>
 </html>
