@@ -1,7 +1,10 @@
 package com.app.Quiz_Application.security.controller;
 
 import com.app.Quiz_Application.config.SecurityConfig;
+import com.app.Quiz_Application.question.model.Question;
 import com.app.Quiz_Application.security.service.CustomSecurityService;
+import com.app.Quiz_Application.question.service.QuizService;
+
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -9,19 +12,24 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class SecurityController {
 
     private CustomSecurityService securityService;
     private AuthenticationManager authenticationManager;
+    private QuizService service;
 
-    public SecurityController(CustomSecurityService securityService, AuthenticationManager authenticationManager){
+    public SecurityController(CustomSecurityService securityService, AuthenticationManager authenticationManager, QuizService service){
         this.securityService = securityService;
         this.authenticationManager = authenticationManager;
+        this.service = service;
     }
 
     @GetMapping("/home")
@@ -57,7 +65,9 @@ public class SecurityController {
     }
 
     @GetMapping("/quizTaker")
-    public String quizTaker(){
+    public String quizTaker(Model model){
+        List<Question> questions = service.getAllQuestions();
+        model.addAttribute("Questions",questions);
         return "quizTaker";
     }
 
