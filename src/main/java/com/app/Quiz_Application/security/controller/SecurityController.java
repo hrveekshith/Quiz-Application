@@ -64,12 +64,7 @@ public class SecurityController {
         return "admin";
     }
 
-    @GetMapping("/quizTaker")
-    public String quizTaker(Model model){
-        List<Question> questions = service.getAllQuestions();
-        model.addAttribute("Questions",questions);
-        return "quizTaker";
-    }
+
 
     @PostMapping("/register")
     public String register(@RequestParam  String username,

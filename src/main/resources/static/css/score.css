@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f4f7fb, #eef2f7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1f2937;
+}
+
+/* SCORE CARD */
+.central-box {
+    background: #ffffff;
+    padding: 60px 80px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+    position: relative;
+}
+
+/* TITLE (optional if you add one later) */
+.central-box h2 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+
+/* SCORE NUMBER */
+.central-box h1 {
+    font-size: 72px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: -2px;
+}
+
+/* ADD % AFTER NUMBER */
+.central-box h1::after {
+    content: "%";
+    font-size: 28px;
+    font-weight: 600;
+    margin-left: 6px;
+    color: #3b82f6;
+}
+
+/* SUBTEXT */
+.score-text {
+    margin-top: 18px;
+    font-size: 16px;
+    color: #4b5563;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .central-box {
+        padding: 40px 30px;
+        width: 90%;
+    }
+
+    .central-box h1 {
+        font-size: 56px;
+    }
+}

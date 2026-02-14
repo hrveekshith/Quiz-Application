@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/quizTaker.css}">
     <title>Happy Quizzee Time!....</title>
 </head>
 <body>
-    <form action="/processAns" method="post">
+    <form th:action="@{/processAns}" method="post">
         <div th:each="q, stat: ${Questions}">
             <p th:text="${q.questionText}"></p>
             <input type="hidden" th:name="answerList[__${stat.index}__].id" th:value="${q.id}">
             <ul style="list-style-type: none;">
-                <li th:each="i : ${q.options}">
-                    <input type="radio" th:id="answerList[__${stat.index}__]"  th:name="answerList[__${stat.index}__].SelectedAns" th:value="${i}"><label for="answerList[__${stat.index}__]" th:text="${i}"></label>
+                <li th:each="i ,optstat: ${q.options}">
+                    <input type="radio" th:id="'ans_'+${stat.index}+'_'+${optstat.index}"  th:name="answerList[__${stat.index}__].selectedAns" th:value="${i}"><label th:for="'ans_'+${stat.index}+'_'+${optstat.index}" th:text="${i}"></label>
                 </li>
             </ul>
             

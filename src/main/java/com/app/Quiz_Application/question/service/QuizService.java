@@ -16,6 +16,10 @@ public class QuizService {
         return questions.values().stream().toList();
     }
 
+    public Question getQuestionById(UUID id){
+        return questions.get(id);
+    }
+
     public void addQuestion(Question question){
         questions.put(question.getId(),question);
     }

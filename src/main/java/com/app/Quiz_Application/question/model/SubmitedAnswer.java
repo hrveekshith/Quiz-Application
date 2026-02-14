@@ -14,5 +14,5 @@ import java.util.UUID;
 @NoArgsConstructor
 public class SubmitedAnswer {
     private UUID id;
-    private String SelectedAns;
+    private String selectedAns;
 }
